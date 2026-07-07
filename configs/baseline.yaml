@@ -1,9 +1,15 @@
+seed: 42
+
 model:
   name: "deepset/gbert-base"
+
+data:
+  max_length: 256
 
 training:
   epochs: 5
   batch_size: 16
   learning_rate: 2e-5
 
-seed: 42
+output:
+  directory: "results/baseline"
