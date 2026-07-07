@@ -16,8 +16,10 @@ Experiments will compare:
 
 ## Setup
 
-Create environment:
+Create and activate a Python environment, then install dependencies:
 
 ```bash
-conda env create -f environment.yml
-conda activate germeval2026
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+```

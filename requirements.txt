@@ -1,0 +1,9 @@
+# Core data science dependencies
+numpy
+pandas
+scikit-learn
+
+# PyTorch with CUDA support (use the official PyTorch index if needed)
+torch==2.12.1
+torchvision==0.17.1
+torchaudio==2.12.1

@@ -1,2 +1,16 @@
 name: germeval2026
-
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+  - numpy
+  - pandas
+  - scikit-learn
+  - pytorch
+  - torchvision
+  - torchaudio
+  - pytorch-cuda=12.2
