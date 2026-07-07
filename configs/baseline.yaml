@@ -1,0 +1,9 @@
+model:
+  name: "deepset/gbert-base"
+
+training:
+  epochs: 5
+  batch_size: 16
+  learning_rate: 2e-5
+
+seed: 42

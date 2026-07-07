@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Conda
+.env
+.venv
+env/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Model checkpoints
+checkpoints/
+models/
+outputs/
+
+# HuggingFace cache
+.cache/
+huggingface/
+
+# Logs
+logs/
+*.log
+
+# TensorBoard
+runs/
+
+# Data
+data/raw/
+data/processed/
+
+# Results
+results/
+
+# Misc
+*.pt
+*.pth
+*.ckpt

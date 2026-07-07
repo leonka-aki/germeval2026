@@ -1,0 +1,49 @@
+name: germeval2026
+
+channels:
+  - conda-forge
+  - pytorch
+
+dependencies:
+  - python=3.12
+  - pip
+
+  # Scientific Computing
+  - numpy
+  - pandas
+  - scipy
+  - scikit-learn
+  - matplotlib
+  - jupyterlab
+
+  # Utilities
+  - tqdm
+  - pyyaml
+
+  # PyTorch
+  - pytorch
+  - torchvision
+  - torchaudio
+
+  # Install remaining packages via pip
+  - pip:
+      - transformers
+      - datasets
+      - evaluate
+      - accelerate
+      - sentencepiece
+      - tokenizers
+      - huggingface-hub
+      - safetensors
+
+      # Metrics
+      - seqeval
+
+      # Explainability
+      - shap
+
+      # Logging
+      - tensorboard
+
+      # Experiment tracking (optional)
+      - wandb
