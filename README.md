@@ -52,3 +52,15 @@ python -m src.training.train_baseline --task c2a
 ```
 
 `--task` accepts `c2a`, `dbo`, `def`, or `vio`. Config (n-grams, regularization, val split size, ...) lives in [configs/tfidf_baseline.yaml](configs/tfidf_baseline.yaml). Trained model, metrics, and a classification report are written to `results/tfidf_baseline/<task>/`.
+
+### Generating a submission
+
+Once a task has a trained model, generate predictions on the real (unlabeled) `*_test_26.csv` in the shared task's required format:
+
+```bash
+python -m src.training.predict --team YOURTEAMNAME --run 1
+```
+
+This writes one CSV per subtask (`id;<label_column>`, semicolon-delimited, `TRUE`/`FALSE` for the binary tasks) to `submissions/<team><run>/`, named `<team><run>_<task>.csv` per the Codabench naming convention. Use `--task c2a` (repeatable) to restrict to specific subtasks. Zip the contents of that folder into `<team><run>.zip` before submitting — this script does not create the zip itself.
+
+The `submissions/` folder doesn't exist until you run this — it's created on demand and gitignored, same as `results/`.
