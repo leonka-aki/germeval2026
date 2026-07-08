@@ -1,0 +1,18 @@
+seed: 42
+
+model:
+  name: "deepset/gbert-base"
+
+data:
+  max_length: 256
+  # kept identical to configs/gbert.yaml so each task's held-out validation
+  # tweets are exactly the same ids as the single-task experiments
+  val_size: 0.15
+
+training:
+  epochs: 5
+  batch_size: 16
+  learning_rate: 2e-5
+
+output:
+  directory: "results/multitask"

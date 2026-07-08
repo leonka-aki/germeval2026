@@ -35,3 +35,26 @@ def load_split(task: str, split: str) -> pd.DataFrame:
     if df.shape[1] == 3:
         df = df.rename(columns={df.columns[2]: "label"})
     return df
+
+
+def load_pooled(split: str = "train") -> pd.DataFrame:
+    """Union of all four subtasks' tweets by id, for multi-task training.
+
+    Returns columns "id", "text", and one "label_<task>" column per task,
+    NaN where that task has no annotation for the tweet. Tweets shared
+    across task files have byte-identical text apart from line-ending
+    normalization (CRLF vs LF), so text is normalized before merging.
+    """
+    pooled = None
+    for task in TASKS:
+        df = load_split(task, split)[["id", "text"] + (["label"] if split != "test" else [])].copy()
+        df["text"] = df["text"].str.replace("\r\n", "\n").str.replace("\r", "\n")
+        if "label" in df.columns:
+            df = df.rename(columns={"label": f"label_{task}"})
+        if pooled is None:
+            pooled = df
+        else:
+            pooled = pooled.merge(df, on="id", how="outer", suffixes=("", "_new"))
+            if "text_new" in pooled.columns:
+                pooled["text"] = pooled["text"].fillna(pooled.pop("text_new"))
+    return pooled
